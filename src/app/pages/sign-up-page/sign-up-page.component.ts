@@ -8,12 +8,10 @@ import {
   ViewChild
 } from '@angular/core';
 import { Router } from '@angular/router';
-
-export class SignUpData {
-  public username: string;
-  public password: string;
-  public email: string;
-}
+import { AlertService } from 'src/core/services/alert.service';
+import { UserService } from 'src/core/services/user.service';
+import { User } from 'src/core/models/user';
+import { RouteService } from 'src/core/services/route.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -21,13 +19,12 @@ export class SignUpData {
   styleUrls: ['./sign-up-page.component.scss']
 })
 export class SignUpPageComponent implements AfterViewInit {
-  @Output() login = new EventEmitter<SignUpData>();
   @Input() autofocus = true; // should autofocus username field (default true)
 
   @ViewChild('usernameInput') usernameInput: ElementRef;
-  signUpData: SignUpData = new SignUpData();
+  user: User = new User();
 
-  constructor(private router: Router) {}
+  constructor(private routeService: RouteService, private alertService: AlertService, private userService: UserService) {}
 
   ngAfterViewInit() {
     if (this.autofocus) {
@@ -36,20 +33,28 @@ export class SignUpPageComponent implements AfterViewInit {
   }
 
   // Emit event to login output
-  emitSignUpData() {
-    this.login.emit(this.sanitize(this.signUpData));
-    console.log("Sign-up data is: " + JSON.stringify(this.signUpData));
+  create() {
+    this.user = this.sanitize(this.user);
+    console.log("Sign-up data is: " + JSON.stringify(this.user));
+    this.userService.create(this.user).then((result) => {
+      console.log("Sign-up: " + result);
+      this.routeService.goLoginPage();
+      this.alertService.success("Sign up successful");
+    },
+    (error) => {
+      this.alertService.error("Sign up error: " + error);
+    });
   }
 
   // Sanitize input
-  private sanitize(signUpData: SignUpData): SignUpData {
-    const username = signUpData.username;
-    signUpData.username = username.replace(/[^0-9a-zA-Z@_]/g, '');
+  private sanitize(user: User): User {
+    const username = user.username;
+    user.username = username.replace(/[^0-9a-zA-Z@_]/g, '');
 
-    let password = signUpData.password;
+    let password = user.password;
     password = password.trim();
-    signUpData.password = password;
+    user.password = password;
     
-    return signUpData;
+    return user;
   }
 }

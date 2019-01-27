@@ -6,9 +6,11 @@ export class User extends Resource {
   id: number;
   firstName: string;
   lastName: string;
+  username: string;
   email: string;
   city: string;
   country: string;
   password: string;
+  facebook: string;
   created_at: Date;
 }

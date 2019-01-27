@@ -11,6 +11,7 @@ import { CityPageComponent } from './pages/city-page/city-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ExperienceNewPageComponent } from './pages/experience-new-page/experience-new-page.component';
 import { HeaderComponent } from './components/header/header.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HeaderComponent } from './components/header/header.component';
     SignUpPageComponent,
     CityPageComponent,
     ExperienceNewPageComponent,
-    HeaderComponent
+    HeaderComponent,
+    AlertComponent
   ],
   imports: [
     AppRoutingModule,

@@ -49,7 +49,7 @@ export class HomePageComponent extends SortablseFilterableComponent<City> implem
 
   // temporary() {
   //   return new Promise((res, rej) => {
-  //     this.http.get("http://localhost:8080").subscribe((data) => {
+  //     this.http.get("https://nwhack2019.azurewebsites.net/city").subscribe((data) => {
   //       res(data);
   //     },
   //     error => {

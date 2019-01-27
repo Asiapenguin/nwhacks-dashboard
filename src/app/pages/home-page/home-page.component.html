@@ -1,10 +1,10 @@
 <app-header></app-header>
 <div class="navbar-home">
   <div class="row">
-    <div class="col-6">
+    <div class="col-9">
       <input type='text' class='form-control' [(ngModel)]='searchString' (keyup)='filter()' placeholder='Filter...' />
     </div>
-    <div class="col-6">
+    <div class="col-2">
       <button class="btn btn-primary" (click)="goToCreateExperience()"><i class="fas fa-plus"></i> Post an
         Experience</button>
     </div>
@@ -15,7 +15,8 @@
     <div *ngFor="let city of cities">
       <div class="card mb-4 mr-4 float-left" (click)="goToCity(city)">
         <div class="card-body">
-          <h5 class="card-title">{{city.name}} {{city.country}}</h5>
+          <h5 class="card-title">{{city.name}}</h5>
+          <small>{{city.country}}</small>
         </div>
       </div>
     </div>
@@ -24,7 +25,8 @@
     <div *ngFor="let city of filteredData">
       <div class="card mb-4 float-left" (click)="goToCity(city)">
         <div class="card-body">
-          <h5 class="card-title">{{city.name}} {{city.country}}</h5>
+          <h5 class="card-title">{{city.name}}</h5>
+          <small>{{city.country}}</small>
         </div>
       </div>
     </div>

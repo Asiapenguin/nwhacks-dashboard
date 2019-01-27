@@ -121,6 +121,15 @@ app.put('/experience/:id', (req, res) => {
     } catch(error) {
         res.json({ error: error });
     }
-})
+});
+
+app.post('/user', (req, res) => {
+    console.log("User: " + req.body);
+    try {
+        res.json({ data: user });
+    } catch(error) {
+        res.json({ error: error });
+    }
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
