@@ -1,4 +1,36 @@
-<nav class="navbar navbar-expanded-lg fixed-top navbar-light">
-  <div class="navbar-brand">nwhacks-dashboard</div>
-  <button class="btn btn-primary pull-right">Logout</button>
+<nav class="navbar navbar-expanded-lg navbar-light bg-light">
+  <div class='input-group col-6'>
+    <div class="navbar-brand">nwhacks-dashboard</div>
+  </div>
+  <div class='input-group col-6'>
+    <input type='text' class='form-control' [(ngModel)]='searchString' (keyup)='filter()' placeholder='Filter...' />
+    <span class="input-group-btn ml-2">
+      <button class="btn btn-primary">Logout</button>
+    </span>
+  </div>
 </nav>
+<div class="table-container">
+  <table class="table" *ngIf="cities">
+    <tbody *ngIf="!searchString">
+      <tr *ngFor="let city of cities">
+        <div class="card mb-4 float-left" (click)="goToCity(city)">
+          <div class="card-body">
+            <h5 class="card-title">{{city.name}} {{city.country}}</h5>
+          </div>
+        </div>
+      </tr>
+    </tbody>
+    <tbody *ngIf="searchString && filteredData.length">
+      <tr *ngFor="let city of filteredData">
+        <div class="card mb-4 float-left" (click)="goToCity(city)">
+          <div class="card-body">
+            <h5 class="card-title">{{city.name}} {{city.country}}</h5>
+          </div>
+        </div>
+      </tr>
+    </tbody>
+    <tbody *ngIf="searchString && !filteredData.length">
+      No cities found!
+    </tbody>
+  </table>
+</div>

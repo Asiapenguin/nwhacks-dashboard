@@ -1,5 +1,5 @@
 <div class="align-middle">
-  <form #loginForm='ngForm' class='form' (ngSubmit)='emitLoginData()' autocomplete="off">
+  <form #loginForm='ngForm' class='form' (ngSubmit)='emitSignUpData()' autocomplete="off">
     <div class='form-group col-4 mx-auto'>
       <label for='username'>Enter the following information to sign-up</label>
       <div class="input-group mb-3 mx-auto">
@@ -41,7 +41,7 @@
     </div>
     <div class="col-4 mx-auto">
       <button type='submit' [disabled]='loginForm.invalid || loginForm.pristine' class="btn btn-login btn-lg w-100"
-        [ngClass]='{ active: loginForm.valid }'>Sign In</button>
+        [ngClass]='{ active: loginForm.valid }'>Sign Up</button>
     </div>
   </form>
 </div>

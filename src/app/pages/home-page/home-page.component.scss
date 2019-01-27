@@ -1,0 +1,22 @@
+.table-container {
+    padding: 20px 30px 20px 30px;
+    background: #fff;
+
+    table {
+        margin-bottom: 0;
+    }
+
+    thead th {
+        border-top: 0;
+        border-bottom: 1px solid #aeaeae;
+        text-transform: uppercase;
+        font-weight: 500;
+        background: #fff;
+    }
+
+    table.table-sm {
+        thead th {
+        padding: 5px;
+        }
+    }
+}
