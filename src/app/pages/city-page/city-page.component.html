@@ -1,3 +1,25 @@
-<p>
-  city-page works!
-</p>
+<app-header></app-header>
+<div *ngIf="!imageIsLoading && experiences" class="header-handler city-container">
+    <div class="row mb-4">
+        <div class="col">
+            <h5>{{city.name}}</h5>
+            <img [src]="cityImage" alt="city.name" *ngIf="!imageIsLoading; else noImageFound" />
+        </div>
+    </div>
+    <h5>Experiences</h5>
+    <div *ngFor="let experience of experiences">
+        <div class="card mb-2 mr-4">
+            <div class="card-body">
+                <h5 class="card-title">{{experience.title}}</h5>
+                <p>{{experience.description}}</p>
+            </div>
+            <div class="card-footer">
+                <i class="fas fa-arrow-up mr-2" (click)="incrementVote(experience)"></i>{{experience.votes}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #noImageFound>
+    <img src="../../../assets/fallback-image.jpg" alt="Fallback Image">
+</ng-template>

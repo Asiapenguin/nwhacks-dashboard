@@ -17,4 +17,8 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.routeService.goLoginPage();
   }
+
+  goHome() {
+    this.routeService.goHomePage();
+  }
 }

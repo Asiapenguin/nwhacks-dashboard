@@ -9,6 +9,24 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
 
+var experience = {
+    id: 1,
+    city: "Vancouver",
+    country: "Canada",
+    title: "My feelings about Vancouver",
+    description: "Vancouver is great!",
+    votes: 2
+}
+
+var experience2 = {
+    id: 2,
+    city: "Vancouver",
+    country: "Canada",
+    title: "My feelings about Vancouver",
+    description: "Vancouver is too rainy!",
+    votes: 55
+}
+
 var user = {
     id: 1,
     firstName: "Nick",
@@ -53,17 +71,55 @@ app.get('/', (req, res) => res.send('Hello World!'))
 app.get('/city', (req, res) => {
     try {
         res.json({ data: cities });
-    } catch {
-        res.json({ error: "error" });
+    } catch(error) {
+        res.json({ error: error });
     }
 });
 
+app.get('/city/:id', (req, res) => {
+    const cityId = req.params.id;
+    console.log("City id: " + cityId);
+    const city = cities[cityId - 1];
+    console.log("City: ", city);
+    try {
+        res.json({ data: city });
+    } catch(error) {
+        res.json({ error: error });
+    }
+})
+
 app.post('/authentication', (req, res) => {
-    console.log(req.body);
+    console.log("Authentication: " + req.body);
     try {
         res.json({ data: user });
-    } catch {
-        res.json({ error: "error" });
+    } catch(error) {
+        res.json({ error: error });
+    }
+});
+
+app.post('/experience', (req, res) => {
+    console.log("Experience: " + JSON.stringify(req.body));
+    try {
+        res.json({ data: experience });
+    } catch(error) {
+        res.json({ error: error });
+    }
+});
+
+app.get('/experience/search', (req, res) => {
+    console.log("Experience for City name: " + req.params);
+    try {
+        res.json({ data: [experience, experience2] })
+    } catch(error) {
+        res.json({ error: error});
+    }
+});
+
+app.put('/experience/:id', (req, res) => {
+    try {
+        res.json({ note: "Successfully updated" });
+    } catch(error) {
+        res.json({ error: error });
     }
 })
 

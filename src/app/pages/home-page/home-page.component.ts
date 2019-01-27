@@ -19,9 +19,9 @@ export class HomePageComponent extends SortablseFilterableComponent<City> implem
 
   constructor(private http: HttpClient, private cityService: CityService, private routeService: RouteService) {
     super();
-    this.temporary().then((data) => {
-      console.log(data);
-    })
+    // this.temporary().then((data) => {
+    //   console.log(data);
+    // })
   }
 
 
@@ -47,14 +47,14 @@ export class HomePageComponent extends SortablseFilterableComponent<City> implem
     this.routeService.goCreateExperience();
   }
 
-  temporary() {
-    return new Promise((res, rej) => {
-      this.http.get("http://localhost:8080").subscribe((data) => {
-        res(data);
-      },
-      error => {
-        rej(error.statusText);
-      });
-    });
-  }
+  // temporary() {
+  //   return new Promise((res, rej) => {
+  //     this.http.get("http://localhost:8080").subscribe((data) => {
+  //       res(data);
+  //     },
+  //     error => {
+  //       rej(error.statusText);
+  //     });
+  //   });
+  // }
 }

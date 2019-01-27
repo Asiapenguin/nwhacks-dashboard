@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 import { UrlService } from './url.service';
+import { ListResponse } from './resource.service';
 
 const ENDPOINT = '/authentication';
 @Injectable({
@@ -16,6 +17,10 @@ export class AuthenticationService {
     this.url = this.urlService.getEndpoint();
   }
 
+  getUser() {
+    return this.user;
+  }
+
   authenticate(username: string, password: string): Promise<User> {
     return new Promise((res, rej) => {
       this.http.post(this.url + ENDPOINT, {
@@ -23,6 +28,7 @@ export class AuthenticationService {
         password: password
       }).subscribe((data: User) => {
         this.user = data;
+        console.log("User: " + this.user);
         res(this.user);
       },
       error => {
