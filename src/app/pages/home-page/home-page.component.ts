@@ -4,6 +4,9 @@ import { CityService } from 'src/core/services/city.service';
 import { SortablseFilterableComponent } from 'src/core/sortable-filterable/sortable-filterable.component';
 import { Router } from '@angular/router';
 import { ListResponse } from 'src/core/services/resource.service';
+import { RouteService } from 'src/core/services/route.service';
+import { temporaryAllocator } from '@angular/compiler/src/render3/view/util';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home-page',
@@ -14,8 +17,11 @@ export class HomePageComponent extends SortablseFilterableComponent<City> implem
 
   cities: Array<City> = [];
 
-  constructor(private cityService: CityService, private router: Router) {
+  constructor(private http: HttpClient, private cityService: CityService, private routeService: RouteService) {
     super();
+    this.temporary().then((data) => {
+      console.log(data);
+    })
   }
 
 
@@ -34,7 +40,21 @@ export class HomePageComponent extends SortablseFilterableComponent<City> implem
   }
 
   goToCity(city: City) {
-    this.router.navigate(["/city", city.id]);
+    this.routeService.goCity(city.id);
   }
 
+  goToCreateExperience() {
+    this.routeService.goCreateExperience();
+  }
+
+  temporary() {
+    return new Promise((res, rej) => {
+      this.http.get("http://localhost:8080").subscribe((data) => {
+        res(data);
+      },
+      error => {
+        rej(error.statusText);
+      });
+    });
+  }
 }

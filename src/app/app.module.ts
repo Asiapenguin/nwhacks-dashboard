@@ -9,7 +9,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component';
 import { CityPageComponent } from './pages/city-page/city-page.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { ExperienceNewPageComponent } from './pages/experience-new-page/experience-new-page.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
     HomePageComponent,
     LoginPageComponent,
     SignUpPageComponent,
-    CityPageComponent
+    CityPageComponent,
+    ExperienceNewPageComponent,
+    HeaderComponent
   ],
   imports: [
     AppRoutingModule,

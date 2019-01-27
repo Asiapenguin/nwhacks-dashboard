@@ -11,4 +11,16 @@ export class RouteService {
   goHomePage() {
     this.router.navigate(["/home"], { replaceUrl: true });
   }
+
+  goCity(id: number) {
+    this.router.navigate(["/city", id]);
+  }
+
+  goCreateExperience() {
+    this.router.navigate(["/experience/new"]);
+  }
+
+  goLoginPage() {
+    this.router.navigate(["/login", { replaceUrl: true }]);
+  }
 }

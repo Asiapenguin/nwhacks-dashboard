@@ -3,6 +3,7 @@ import { HomePageComponent } from 'src/app/pages/home-page/home-page.component';
 import { LoginPageComponent } from 'src/app/pages/login-page/login-page.component';
 import { SignUpPageComponent } from 'src/app/pages/sign-up-page/sign-up-page.component';
 import { CityPageComponent } from 'src/app/pages/city-page/city-page.component';
+import { ExperienceNewPageComponent } from 'src/app/pages/experience-new-page/experience-new-page.component';
 
 export const routes: Routes = [
   {
@@ -45,6 +46,26 @@ export const routes: Routes = [
       {
         path: ':id',
         component: CityPageComponent
+      }
+    ]
+  },
+  {
+    path: 'experience',
+    data: {
+      title: 'Experience'
+    },
+    children: [
+      {
+        path: '',
+        redirectTo: 'home', // Change later
+        pathMatch: 'full'
+      },
+      {
+        path: 'new',
+        component: ExperienceNewPageComponent,
+        data: {
+          title: 'Create New Component'
+        }
       }
     ]
   }

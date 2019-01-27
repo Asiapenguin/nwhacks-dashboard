@@ -2,14 +2,10 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  EventEmitter,
   Input,
-  Output,
   ViewChild
 } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/core/services/authentication.service';
-import { User } from 'src/core/models/user';
 import { RouteService } from 'src/core/services/route.service';
 
 export class LoginData {

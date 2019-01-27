@@ -7,5 +7,5 @@ export class Experience extends Resource {
   id: number;
   user_id: number;
   city: City;
-  body: string;
+  description: string;
 }

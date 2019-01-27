@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expanded-lg navbar-light bg-light">
+  <div class="row">
+    <div class="col-6">
+      <div class='input-group'>
+        <div class="navbar-brand">nwhacks-dashboard</div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class='btn-group float-right' role="group">
+        <button class="btn btn-primary">Logout</button>
+      </div>
+    </div>
+  </div>
+</nav>
+<form #experienceForm="ngForm" (ngSubmit)="create(experience)" autocomplete="off">
+  <div class='form mt-4'>
+    <div class='form-row'>
+
+      <div class='form-group col-8 mx-auto'>
+        <h5>Share your experience with others!</h5>
+
+        <label>Where did you go?</label>
+      </div>
+    </div>
+    <div class="form-row mx-auto">
+      <div class="form-group col-4 ml-auto">
+        <input #cityName='ngModel' type='text' name='city_name' required class='form-control mx-auto' placeholder='City'
+          [(ngModel)]='experience.city'>
+        <label *ngIf='cityName.invalid && cityName.touched' class='error-message'>Please enter a valid city</label>
+      </div>
+      <div class="form-group col-4 mr-auto">
+        <input #countryName='ngModel' type='text' name='country_name' required class='form-control' placeholder='Country'
+          [(ngModel)]='experience.country'>
+        <label *ngIf='countryName.invalid && countryName.touched' class='error-message'>Please enter a valid country</label>
+      </div>
+    </div>
+    <div class='form-row mb-4'>
+      <div class='form-group col-8 mx-auto'>
+        <label>Describe your experience</label>
+        <textarea class="form-control" rows="5" name="description" required></textarea>
+      </div>
+    </div>
+    <div class='form-row mb-4'>
+      <div class='form-group col-8 mx-auto'>
+        <button type='submit' class='btn btn-primary' [disabled]='!accountForm.valid'>Create</button>
+      </div>
+    </div>
+  </div>
+</form>
