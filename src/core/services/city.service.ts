@@ -1,29 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { City } from '../models/city';
+import { ResourceService } from './resource.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CityService {
-
-  cities = [
-    {
-      id: 1,
-      name: "Vancouver",
-      country: "Canada"
-    },
-    {
-      id: 2,
-      name: "Calgary",
-      country: "Canada"
-    }
-  ];
-
-  constructor() { }
-
-  get() {
-    return new Promise((resolve, reject) => {
-      resolve(this.cities);
-    });
+export class CityService extends ResourceService {
+  constructor(injector: Injector) {
+    super(injector, City);
   }
 }

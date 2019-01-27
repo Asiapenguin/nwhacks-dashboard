@@ -4,6 +4,7 @@ import { GetQuery, SearchQuery } from '../services/resource-queries.service';
 import { Observable, Subject } from 'rxjs';
 
 import { Resource } from '../models/resource';
+import { UrlService } from './url.service';
 
 /**
  * Metadata on response
@@ -33,10 +34,11 @@ export class ResourceService {
   http: HttpClient;
   private observable = new Subject();
 
-  constructor(private injector: Injector, private modelClass: any) {
+  constructor(private injector: Injector, 
+              private modelClass: any) {
     this.http = injector.get(HttpClient);
-    const url = "";
-    this.apiUrl = url.concat(modelClass.resourcePath);
+    const urlService = injector.get(UrlService);
+    this.apiUrl = urlService.getEndpoint().concat(modelClass.resourcePath);
   }
 
   /**

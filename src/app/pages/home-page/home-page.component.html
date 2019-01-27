@@ -9,28 +9,29 @@
     </span>
   </div>
 </nav>
-<div class="table-container">
-  <table class="table" *ngIf="cities">
-    <tbody *ngIf="!searchString">
-      <tr *ngFor="let city of cities">
-        <div class="card mb-4 float-left" (click)="goToCity(city)">
-          <div class="card-body">
-            <h5 class="card-title">{{city.name}} {{city.country}}</h5>
-          </div>
+<nav class="navbar">
+  <button class="btn btn-primary pull-right"><i class="fas fa-plus"></i> Post an Experience</button>
+</nav>
+<div class="card-container">
+  <div *ngIf="!searchString">
+    <div *ngFor="let city of cities">
+      <div class="card mb-4 mr-4 float-left" (click)="goToCity(city)">
+        <div class="card-body">
+          <h5 class="card-title">{{city.name}} {{city.country}}</h5>
         </div>
-      </tr>
-    </tbody>
-    <tbody *ngIf="searchString && filteredData.length">
-      <tr *ngFor="let city of filteredData">
-        <div class="card mb-4 float-left" (click)="goToCity(city)">
-          <div class="card-body">
-            <h5 class="card-title">{{city.name}} {{city.country}}</h5>
-          </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="searchString && filteredData.length">
+    <div *ngFor="let city of filteredData">
+      <div class="card mb-4 float-left" (click)="goToCity(city)">
+        <div class="card-body">
+          <h5 class="card-title">{{city.name}} {{city.country}}</h5>
         </div>
-      </tr>
-    </tbody>
-    <tbody *ngIf="searchString && !filteredData.length">
-      No cities found!
-    </tbody>
-  </table>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="searchString && !filteredData.length">
+    No cities found!
+  </div>
 </div>
