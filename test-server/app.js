@@ -29,12 +29,14 @@ var experience2 = {
 
 var user = {
     id: 1,
+    username: "nickkong",
     firstName: "Nick",
     lastName: "Kong",
     email: "nicholaskong@live.ca",
     city: "Vancouver",
     country: "Canada",
     password: "1234",
+    facebook: "https://facebook.com",
     created_at: Date.now()
 }
 
@@ -131,5 +133,13 @@ app.post('/user', (req, res) => {
         res.json({ error: error });
     }
 });
+
+app.put('/user/:id', (req, res) => {
+    try {
+        res.json({ note: "Successfully updated" });
+    } catch(error) {
+        res.json({ error: error });
+    }
+})
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

@@ -4,6 +4,7 @@ import { LoginPageComponent } from 'src/app/pages/login-page/login-page.componen
 import { SignUpPageComponent } from 'src/app/pages/sign-up-page/sign-up-page.component';
 import { CityPageComponent } from 'src/app/pages/city-page/city-page.component';
 import { ExperienceNewPageComponent } from 'src/app/pages/experience-new-page/experience-new-page.component';
+import { ProfilePageComponent } from 'src/app/pages/profile-page/profile-page.component';
 
 export const routes: Routes = [
   {
@@ -68,5 +69,12 @@ export const routes: Routes = [
         }
       }
     ]
+  },
+  {
+    path: 'profile',
+    component: ProfilePageComponent,
+    data: {
+      title: 'Profile'
+    }
   }
 ];

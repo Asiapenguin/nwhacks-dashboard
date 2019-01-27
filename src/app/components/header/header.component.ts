@@ -14,6 +14,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  profile() {
+    this.routeService.goProfilePage();
+  }
+
   logout() {
     this.routeService.goLoginPage();
   }

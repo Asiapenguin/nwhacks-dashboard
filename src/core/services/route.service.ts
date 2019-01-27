@@ -23,4 +23,8 @@ export class RouteService {
   goLoginPage() {
     this.router.navigate(["/login", { replaceUrl: true }]);
   }
+
+  goProfilePage() {
+    this.router.navigate(["/profile"]);
+  }
 }

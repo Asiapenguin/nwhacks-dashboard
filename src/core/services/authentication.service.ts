@@ -26,8 +26,8 @@ export class AuthenticationService {
       this.http.post(this.url + ENDPOINT, {
         username: username,
         password: password
-      }).subscribe((data: User) => {
-        this.user = data;
+      }).subscribe((result: any) => {
+        this.user = result.data;
         console.log("User: " + this.user);
         res(this.user);
       },

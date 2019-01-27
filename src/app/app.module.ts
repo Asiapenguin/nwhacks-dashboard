@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ExperienceNewPageComponent } from './pages/experience-new-page/experience-new-page.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AlertComponent } from './components/alert/alert.component';
     CityPageComponent,
     ExperienceNewPageComponent,
     HeaderComponent,
-    AlertComponent
+    AlertComponent,
+    ProfilePageComponent
   ],
   imports: [
     AppRoutingModule,

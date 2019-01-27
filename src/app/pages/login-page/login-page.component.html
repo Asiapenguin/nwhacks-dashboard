@@ -2,6 +2,11 @@
   <div #errorDispaly class="error-display" *ngIf="error">
     <div>{{loginError}}</div>
   </div>
+  <div class="row">
+    <h1 class="col-4 mx-auto">
+      TravelMatching
+    </h1>
+  </div>
   <form #loginForm="ngForm" class="form" (ngSubmit)="doLogin()" autocomplete="off">
     <div class="form-group col-4 mx-auto">
       <label for="username">Username</label>
