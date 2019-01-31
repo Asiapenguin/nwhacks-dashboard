@@ -5,8 +5,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ImageService {
-
-  apiKey = "AIzaSyA8EyWoILm59wBzwGxiUoktUv3DI3oC_pQ";
+  
+  // Key removed for security purposes. With valid key set, this service will fetch images based on location name.
+  apiKey = "";
   placeSearchBase = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inputtype=textquery&fields=photos&key=${this.apiKey}`;
   placePhotoBase = `https://maps.googleapis.com/maps/api/place/photo?key=${this.apiKey}`;
 
